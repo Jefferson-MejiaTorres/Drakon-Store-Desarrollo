@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Dependency directories
+.DS_Store
+
+# Build output
+dist/
+
+# IDE specific
+.vscode/
+.idea/
