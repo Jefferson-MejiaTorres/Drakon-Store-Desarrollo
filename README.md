@@ -1,52 +1,84 @@
 <div align="center">
-
 # Drakon Store Web - Desarrollo
+[![Deploy](https://img.shields.io/badge/Ver%20Sitio-Drakon%20Store-blue?style=for-the-badge)](https://drakon-store-web.vercel.app/)
 
-<img src="Drakon Store Web/images/Logo.png" alt="Logo Drakon Store" width="180" />
+## 📋 Descripción
+Drakon Store es una plataforma de comercio electrónico especializada en streetwear, ofreciendo una experiencia única para los amantes de la moda urbana. Nuestro enfoque está en proporcionar productos de edición limitada y exclusivos.
 
-</div>
+## 🚀 Características Principales
+- 🛍️ Catálogo de productos exclusivos
+- ⭐ Sistema de ediciones limitadas
+- 💳 Proceso de compra seguro
+- 👤 Gestión de usuarios y favoritos
+- 📱 Diseño responsive
+- 🔍 Búsqueda avanzada de productos
 
-Repositorio para el desarrollo del sitio web de Drakon Store. Contiene el código, recursos y documentación necesarios para la implementación de la plataforma.
-
-## Autores
-- Jefferson David Mejia Torres
-- Luis Miguel Lindarte Contreras
-- Daniel Felipe Contreras Caballero
-
-## Estructura del Proyecto
-
+## 🏗️ Estructura del Proyecto
 ```
 Drakon-Store-Desarrollo/
-├── Investigacion/
-│   └── Tarea 1.md
-├── Documentación/
-│   ├── README.md
-│   ├── Proyecto De Desarrollo.docx
-│   ├── Proyecto De Desarrollo.pdf
-│   ├── Diagramas/
-│   └── Informes/
-├── FrontEnd/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   └── images/
-├── BackEnd/
-│   └── README.md
-└── Drakon Store Web/ (código fuente original, migrado a FrontEnd)
+├── FrontEnd/           # Interfaz de usuario y experiencia
+├── BackEnd/           # Lógica de servidor y API
+├── Documentación/     # Documentos técnicos y guías
+└── Investigacion/     # Recursos de investigación
 ```
 
-### Carpetas principales
-- **Investigacion/**: Contiene la investigación y tareas teóricas sobre repositorios y control de versiones.
-- **Documentación/**: Informes, diagramas y documentación técnica del proyecto.
-- **FrontEnd/**: Código fuente de la interfaz web, estilos, scripts e imágenes.
-- **BackEnd/**: Estructura para el futuro desarrollo del backend.
-- **Drakon Store Web/**: Carpeta original del frontend, ahora migrada a `FrontEnd/`.
+## 🛠️ Tecnologías Utilizadas
+- **Frontend**
+  - HTML5
+  - CSS3
+  - JavaScript
+  - Bootstrap 5
+  - React.js
 
-### Estado actual
-- El desarrollo principal se encuentra en la carpeta `FrontEnd`.
-- La carpeta `BackEnd` está lista para futuras implementaciones de servidor y API.
-- Toda la documentación y evidencias están en `Documentación` e `Investigacion`.
+- **Backend**
+  - Node.js
+  - Express.js
+  - MariaDB/MySQL
+  - JWT Authentication
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/tu-usuario/Drakon-Store-Desarrollo.git
+```
+
+2. Instala las dependencias del Frontend:
+```bash
+cd FrontEnd
+npm install
+```
+
+3. Instala las dependencias del Backend:
+```bash
+cd BackEnd
+npm install
+```
+
+## 🚀 Despliegue
+El proyecto está actualmente desplegado en Vercel:
+- Frontend: [https://drakon-store-web.vercel.app/](https://drakon-store-web.vercel.app/)
+
+## 📚 Documentación
+- [Documentación Técnica](./Documentación/)
+- [Modelo de Base de Datos](./BackEnd/db_model/)
+- [API Documentation](./BackEnd/README.md)
+
+## 🤝 Contribución
+1. Fork el proyecto
+2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
+
+## 📞 Contacto
+- Email: contacto@drakonstore.com
+- Sitio Web: [https://drakon-store-web.vercel.app/](https://drakon-store-web.vercel.app/)
 
 ---
-
-> Para más detalles sobre la estructura y uso de cada carpeta, consulta los archivos `README.md` internos.
+<div align="center">
+  <sub>Construido con ❤️ por el equipo de Drakon Store</sub>
+</div>
