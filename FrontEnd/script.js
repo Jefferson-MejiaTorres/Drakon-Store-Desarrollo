@@ -2,73 +2,169 @@
 Archivo JavaScript principal para la tienda Drakon Store. Implementa la lógica de interacción, carrito de compras, favoritos y animaciones de la interfaz.
 Copia aquí el archivo `script.js` desde la carpeta `Drakon Store Web` para centralizar el desarrollo del FrontEnd.
 */
-const products = [
-    { id: 1, name: "Basic Shirt Fit T-Shirt", price: 199, image: "images/gorra1.png", category: "Cotton T" },
-    { id: 2, name: "Modelo De La Gorra", price: 199, image: "images/gorra2.png", category: "NOMBRE DE LA GORRA" },
-    { id: 3, name: "Full Sleeve Zipper", price: 199, image: "images/gorra3.png", category: "Cotton T Shirt" },
-    { id: 4, name: "Full Sleeve Zipper", price: 199, image: "images/gorra5.png", category: "Cotton T Shirt" },
-    { id: 5, name: "Full Sleeve Zipper", price: 199, image: "images/gorra2.png", category: "Cotton T Shirt" },
-    { id: 6, name: "Full Sleeve Zipper", price: 199, image: "images/gorra3.png", category: "Cotton T Shirt" }
-];
 
-const main = document.getElementById("products");
-const cartCount = document.getElementById("cart-count");
-const favoritesCount = document.getElementById("favorites-count");
-let cart = 0;
-let favorites = [];
+// Configuración de la API
+const API_URL = 'http://localhost:3000/api';
 
-products.forEach(product => {
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("product", "col-md-4", "mb-4");
-    productDiv.innerHTML = `
-        <button class="favorite-btn" data-id="${product.id}">
-            <i class="bi bi-heart"></i>
-        </button>
-        <img src="${product.image}" alt="${product.name}" class="img-fluid mb-3" />
-        <p class="category-text mb-1">${product.category}</p>
-        <h3 class="h5 fw-normal mb-1">${product.name}</h3>
-        <p class="price-text">$ ${product.price}</p>
-        <button class="add-to-cart mt-2 btn btn-dark text-white px-4 py-2 rounded-pill w-100">
-            Añadir al carrito
-        </button>
-    `;
-    main.appendChild(productDiv);
-});
+// Estado global de la aplicación
+let currentUser = null;
+let products = [];
+let cart = [];
 
-document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", () => {
-        cart++;
-        cartCount.textContent = cart;
-        
-        // Animación
-        cartCount.classList.remove("bump");
-        void cartCount.offsetWidth; // Reinicia la animación
-        cartCount.classList.add("bump");
-    });
-});
+// Funciones de utilidad
+const getToken = () => localStorage.getItem('token');
+const setToken = (token) => localStorage.setItem('token', token);
+const removeToken = () => localStorage.removeItem('token');
 
-document.querySelectorAll(".favorite-btn").forEach(button => {
-    button.addEventListener("click", (e) => {
-        const favBtn = e.target.closest(".favorite-btn");
-        const heartIcon = favBtn.querySelector("i");
-        const id = favBtn.dataset.id;
-        if (!favorites.includes(id)) {
-            favorites.push(id);
-            favBtn.classList.add("active");
-            heartIcon.classList.replace("bi-heart", "bi-heart-fill");
-        } else {
-            favorites = favorites.filter(fav => fav !== id);
-            favBtn.classList.remove("active");
-            heartIcon.classList.replace("bi-heart-fill", "bi-heart");
+// Funciones de autenticación
+async function register(userData) {
+    try {
+        const response = await fetch(`${API_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+        const data = await response.json();
+        if (data.status === 'success') {
+            setToken(data.data.token);
+            currentUser = data.data.user;
+            return true;
         }
-        favoritesCount.textContent = favorites.length;
-    });
+        return false;
+    } catch (error) {
+        console.error('Error en registro:', error);
+        return false;
+    }
+}
+
+async function login(credentials) {
+    try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        });
+        const data = await response.json();
+        if (data.status === 'success') {
+            setToken(data.data.token);
+            currentUser = data.data.user;
+            return true;
+        }
+        return false;
+    } catch (error) {
+        console.error('Error en login:', error);
+        return false;
+    }
+}
+
+async function logout() {
+    removeToken();
+    currentUser = null;
+    window.location.href = '/';
+}
+
+// Funciones de productos
+async function fetchProducts() {
+    try {
+        const response = await fetch(`${API_URL}/products`);
+        const data = await response.json();
+        if (data.status === 'success') {
+            products = data.data.products;
+            renderProducts();
+        }
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+    }
+}
+
+function renderProducts() {
+    const productsContainer = document.getElementById('products');
+    if (!productsContainer) return;
+
+    productsContainer.innerHTML = products.map(product => `
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="${product.image_url}" class="card-img-top" alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-text"><strong>$${product.price}</strong></p>
+                    <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Funciones del carrito
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: 1
+        });
+    }
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
+}
+
+// Inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    // Verificar autenticación
+    const token = getToken();
+    if (token) {
+        // Verificar token y obtener datos del usuario
+        fetch(`${API_URL}/auth/profile`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                currentUser = data.data.user;
+                updateUIForLoggedUser();
+            } else {
+                logout();
+            }
+        })
+        .catch(() => logout());
+    }
+
+    // Cargar productos
+    fetchProducts();
 });
 
-document.getElementById("favorites-btn").addEventListener("click", () => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    window.location.href = "favorites.html";
-});
+function updateUIForLoggedUser() {
+    const authButtons = document.querySelector('.auth-buttons');
+    if (authButtons) {
+        authButtons.innerHTML = `
+            <span class="me-3">Hola, ${currentUser.name}</span>
+            <button class="btn btn-outline-danger" onclick="logout()">Cerrar sesión</button>
+        `;
+    }
+}
 
 // Control del header sticky con sombra al hacer scroll
 const header = document.querySelector('header');

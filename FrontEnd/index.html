@@ -34,16 +34,25 @@
                 <button class="nav-btn px-3">CONTACTO</button>
             </div>
             
-            <button class="icon-btn">
+            <button class="icon-btn" aria-label="Buscar">
                 <i class="bi bi-search"></i>
             </button>
         </nav>
+        
+        <div class="auth-buttons">
+            <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Iniciar Sesión
+            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+                Registrarse
+            </button>
+        </div>
         
         <div id="cart-btn" class="cart-btn-container">
             <div class="cart-btn-main">
                 COMPRAR <i class="bi bi-cart ms-2"></i>
             </div>
-            <div id="cart-count" class="cart-btn-counter">4</div>
+            <div id="cart-count" class="cart-btn-counter">0</div>
         </div>
     </header>
     
@@ -62,7 +71,6 @@
                     <button class="coleccion-btn rounded-pill d-flex align-items-center justify-content-center mx-auto">
                         Ver Colección <i class="bi bi-stars ms-2"></i>
                     </button>
-                    
                     <p class="fan-text mt-3">Solo para los verdaderos fanáticos del streetwear</p>
                 </div>
             </aside>
@@ -70,6 +78,68 @@
             <!-- Sección de productos que se desplaza -->
             <div class="col-md-9 p-4">
                 <div id="products" class="row g-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrarse</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="registerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastname" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="registerLastname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="registerPhone">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

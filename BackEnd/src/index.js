@@ -46,5 +46,3 @@ async function startServer() {
     console.error('Error al iniciar el servidor:', error);
   }
 }
-
-startServer(); 
