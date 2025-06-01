@@ -9,6 +9,9 @@
 ## 📋 Descripción
 Drakon Store es una plataforma de comercio electrónico especializada en streetwear, ofreciendo una experiencia única para los amantes de la moda urbana. Nuestro enfoque está en proporcionar productos de edición limitada y exclusivos.
 
+## 👨‍🏫 Docente Tutora
+Este proyecto es desarrollado bajo la supervisión de la **Ing. Fanny Casadiego**, docente tutora de la asignatura.
+
 ## 🚀 Características Principales
 - 🛍️ Catálogo de productos exclusivos
 - ⭐ Sistema de ediciones limitadas
@@ -16,6 +19,7 @@ Drakon Store es una plataforma de comercio electrónico especializada en streetw
 - 👤 Gestión de usuarios y favoritos
 - 📱 Diseño responsive
 - 🔍 Búsqueda avanzada de productos
+- 🔒 Sistema de autenticación robusto
 
 ## 🏗️ Estructura del Proyecto
 ```
@@ -39,6 +43,15 @@ Drakon-Store-Desarrollo/
   - Express.js
   - MariaDB/MySQL
   - JWT Authentication
+  - Bcrypt para encriptación
+
+## 🔒 Seguridad
+- Autenticación mediante JWT
+- Contraseñas hasheadas con bcrypt
+- Protección contra ataques comunes
+- Validación de datos en todas las capas
+- Manejo seguro de sesiones
+- [Ver más detalles de seguridad](./Documentación/seguridad.md)
 
 ## 📦 Instalación
 
@@ -67,6 +80,7 @@ El proyecto está actualmente desplegado en Vercel:
 - [Documentación Técnica](./Documentación/)
 - [Modelo de Base de Datos](./BackEnd/db_model/)
 - [API Documentation](./BackEnd/README.md)
+- [Seguridad](./Documentación/seguridad.md)
 
 ## 🤝 Contribución
 1. Fork el proyecto
