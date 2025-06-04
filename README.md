@@ -9,6 +9,11 @@
 ## 📋 Descripción
 Drakon Store es una plataforma de comercio electrónico especializada en streetwear, ofreciendo una experiencia única para los amantes de la moda urbana. Nuestro enfoque está en proporcionar productos de edición limitada y exclusivos.
 
+## 👥 Autores
+- Jefferson torres
+- Daniel contreras
+- Luis lindarte
+
 ## 👨‍🏫 Docente Tutora
 Este proyecto es desarrollado bajo la supervisión de la **Ing. Fanny Casadiego**, docente tutora de la asignatura.
 
@@ -24,10 +29,13 @@ Este proyecto es desarrollado bajo la supervisión de la **Ing. Fanny Casadiego*
 ## 🏗️ Estructura del Proyecto
 ```
 Drakon-Store-Desarrollo/
-├── FrontEnd/           # Interfaz de usuario y experiencia
-├── BackEnd/           # Lógica de servidor y API
-├── Documentación/     # Documentos técnicos y guías
-└── Investigacion/     # Recursos de investigación
+├── Drakon Store Web/   # Proyecto principal
+│   ├── FrontEnd/       # Interfaz de usuario
+│   ├── BackEnd/        # Lógica de servidor y API
+│   ├── db_model/       # Modelo de base de datos
+│   └── images/         # Recursos gráficos
+├── Documentación/      # Documentos técnicos y guías
+└── Investigacion/      # Recursos de investigación y tareas
 ```
 
 ## 🛠️ Tecnologías Utilizadas
@@ -36,7 +44,6 @@ Drakon-Store-Desarrollo/
   - CSS3
   - JavaScript
   - Bootstrap 5
-  - React.js
 
 - **Backend**
   - Node.js
@@ -44,6 +51,11 @@ Drakon-Store-Desarrollo/
   - MariaDB/MySQL
   - JWT Authentication
   - Bcrypt para encriptación
+
+- **Documentación**
+  - Markdown
+  - Diagramas UML
+  - Informes técnicos
 
 ## 🔒 Seguridad
 - Autenticación mediante JWT
@@ -60,16 +72,18 @@ Drakon-Store-Desarrollo/
 git clone https://github.com/tu-usuario/Drakon-Store-Desarrollo.git
 ```
 
-2. Instala las dependencias del Frontend:
+2. Navega al directorio del proyecto:
 ```bash
-cd FrontEnd
-npm install
+cd "Drakon-Store-Desarrollo/Drakon Store Web"
 ```
 
-3. Instala las dependencias del Backend:
+3. Para el Frontend, abre directamente `index.html` en tu navegador
+
+4. Para el Backend:
 ```bash
 cd BackEnd
 npm install
+npm start
 ```
 
 ## 🚀 Despliegue
@@ -78,8 +92,10 @@ El proyecto está actualmente desplegado en Vercel:
 
 ## 📚 Documentación
 - [Documentación Técnica](./Documentación/)
-- [Modelo de Base de Datos](./BackEnd/db_model/)
-- [API Documentation](./BackEnd/README.md)
+- [Investigación y Tareas](./Investigacion/)
+- [Modelo de Base de Datos](./Drakon%20Store%20Web/db_model/)
+- [Frontend](./Drakon%20Store%20Web/FrontEnd/)
+- [Backend](./Drakon%20Store%20Web/BackEnd/)
 - [Seguridad](./Documentación/seguridad.md)
 
 ## 🤝 Contribución
@@ -98,5 +114,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.m
 
 ---
 <div align="center">
-  <sub>Construido con ❤️ por el equipo de Drakon Store</sub>
+  <sub>Proyecto académico desarrollado por Jefferson torres, Daniel contreras y Luis lindarte</sub>
+  <br/>
+  <sub>Bajo la supervisión de la Ing. Fanny Casadiego</sub>
 </div>
