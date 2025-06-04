@@ -61,7 +61,7 @@ Representa cada producto dentro del pedido:
 
 ### 5. RELACIÓN ENTRE ENTIDADES
 
-![Diagrama de Entidad-Relación](../Documentación/Diagramas/Diagrama%20de%20entidad%20relación.jpg)
+![Diagrama de Entidad-Relación](../Documentación/Diagramas/Diagrama-de-entidad-relación.jpg)
 
 **Relaciones principales:**
 • **Usuario** ➜ **Pedido** (1:N): Un usuario puede tener múltiples pedidos
